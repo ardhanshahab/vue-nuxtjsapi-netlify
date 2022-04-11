@@ -48,7 +48,8 @@ export default {
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
   axios: {
     // Workaround to avoid enforcing hard-coded localhost:3000: https://github.com/nuxt-community/axios-module/issues/308
-    baseURL: '/',
+    baseURL: 'https://api.themoviedb.org/3/movie/550',
+    apiKey: '5a4de7664ce73b77393b1b9047281421'
   },
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
