@@ -7,7 +7,7 @@ class="d-flex"
 <v-card
 v-for="(movie, index) in listMovies" :key="index"
     class="mx-3 my-3 "
-    max-width="350"
+    max-width="200"
   >
     <v-img
       :src="`https://image.tmdb.org/t/p/w400${movie.poster_path}`"
@@ -37,12 +37,12 @@ v-for="(movie, index) in listMovies" :key="index"
     <v-card-subtitle>
       <p>Release Date : {{ movie.release_date }} </p>
     </v-card-subtitle>
-        <v-card-text>
-         {{movie.overview}}
-        </v-card-text>
         <v-card-subtitle>
         <p>Popularity : {{ movie.popularity }}</p>
 </v-card-subtitle>
+    <v-btn
+    :href="`/movie/${movie.id}`"
+    >Get More Info</v-btn>
 
   </v-card>
 
@@ -55,7 +55,7 @@ v-for="(movie, index) in listMovies" :key="index"
 
 
 export default {
-  name: 'MovieVue',
+  name: 'PopularMovie',
   computed: {
     listMovies() {
       return this.$store.state.movie.movies;
@@ -66,7 +66,7 @@ export default {
   },
   methods: {
     fetchMovie () {
-      this.$store.dispatch("movie/playMovies")
+      this.$store.dispatch("movie/popularMovies")
     },
   },
 }

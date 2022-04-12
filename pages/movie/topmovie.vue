@@ -37,12 +37,12 @@ v-for="(movie, index) in listMovies" :key="index"
     <v-card-subtitle>
       <p>Release Date : {{ movie.release_date }} </p>
     </v-card-subtitle>
-        <v-card-text>
-         {{movie.overview}}
-        </v-card-text>
         <v-card-subtitle>
         <p>Popularity : {{ movie.popularity }}</p>
 </v-card-subtitle>
+    <v-btn
+    :href="`/movie/${movie.id}`"
+    >Get More Info</v-btn>
 
   </v-card>
 
@@ -56,6 +56,7 @@ v-for="(movie, index) in listMovies" :key="index"
 
 export default {
   name: 'PopularMovie',
+
   computed: {
     listMovies() {
       return this.$store.state.movie.movies;
@@ -66,7 +67,7 @@ export default {
   },
   methods: {
     fetchMovie () {
-      this.$store.dispatch("movie/popularMovies")
+      this.$store.dispatch("movie/latestMovies")
     },
   },
 }
