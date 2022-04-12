@@ -1,9 +1,11 @@
 <template>
 <v-container fluid>
-<div class="d-flex">
+<div 
+class="d-flex"
+>
   <v-row>
 <v-card
-v-for="(movie, index) in movies" :key="index"
+v-for="(movie, index) in listMovies" :key="index"
     class="mx-3 my-3 "
     max-width="350"
   >
@@ -50,31 +52,22 @@ v-for="(movie, index) in movies" :key="index"
 </template>
 
 <script>
-import axios from 'axios'
+
 
 export default {
   name: 'MovieVue',
-  data() {
-    return{
-      movies: [],
-    }
+  computed: {
+    listMovies() {
+      return this.$store.state.movie.movies;
+    },
   },
-  async fetch() {
-    await this.getMovies()
+    mounted() {
+    this.fetchMovie();
   },
   methods: {
-    async getMovies() {
-      const data = axios.get(
-        'https://api.themoviedb.org/3/movie/now_playing?api_key=5a4de7664ce73b77393b1b9047281421&language=en-US&page=1'
-      )
-
-    const result = await data
-    result.data.results.forEach((movie) => {
-      this.movies.push(movie)
-    })
-    console.log(this.movies)
-
-    }
-  }
+    fetchMovie () {
+      this.$store.dispatch("movie/playMovies")
+    },
+  },
 }
 </script>

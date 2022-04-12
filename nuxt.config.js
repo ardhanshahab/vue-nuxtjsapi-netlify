@@ -54,7 +54,13 @@ export default {
 
   // PWA module configuration: https://go.nuxtjs.dev/pwa
   pwa: {
+    meta:{
+      title: 'MoviesInt',
+      author: 'Me',
+    },
     manifest: {
+      name: 'MoviesIntID',
+      short_name: 'MoviesID',
       lang: 'en',
     },
   },
